@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Uzair Ahmad - Portfolio</title>
+    <meta name="description" content="Portfolio of Uzair Ahmad - Computer Science Student at FAST University" />
+    <meta name="author" content="Uzair Ahmad" />
+
+    <meta property="og:title" content="Uzair Ahmad - Portfolio" />
+    <meta property="og:description" content="Portfolio of Uzair Ahmad - Computer Science Student at FAST University" />
     <meta property="og:type" content="website" />
 
     <!-- Tailwind CSS -->
@@ -14,18 +19,27 @@
         theme: {
           extend: {
             fontFamily: {
-              mono: ['Space Mono', 'monospace'],
+              sans: ['system-ui', '-apple-system', 'sans-serif'],
             },
           },
         },
       }
     </script>
+
+    <style>
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+    </style>
   </head>
 
-  <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+  <body class="bg-white dark:bg-neutral-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
     <div class="max-w-2xl mx-auto px-4 py-8 relative">
+      <!-- Theme Toggle -->
       <div class="absolute right-4 top-4">
-        <!-- Theme Toggle -->
         <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
           <!-- Moon icon for light mode -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -33,12 +47,20 @@
           </svg>
           <!-- Sun icon for dark mode -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
           </svg>
         </button>
       </div>
 
-      <!-- Personal Info -->
+      <!-- Profile Header -->
       <div class="flex items-start mb-12 sm:flex-row flex-col">
         <img
           src="uzair.jpeg"
@@ -47,7 +69,7 @@
         />
         <div>
           <h1 class="text-2xl font-bold">Uzair Ahmad</h1>
-          <ul class="text-gray-700 dark:text-gray-300 mt-2">
+          <ul class="text-gray-600 dark:text-gray-400 mt-2">
             <li>- 21 y/o</li>
             <li>- Grew up in Pakistan</li>
             <li>- Studying at FAST University</li>
@@ -55,178 +77,304 @@
         </div>
       </div>
 
-      <!-- Experience Section -->
+      <!-- Tabs -->
       <div class="mb-12">
-        <h2 class="text-xl font-medium mb-4 flex items-center">
-          Experience <span class="ml-1">💼</span>
-        </h2>
+        <div class="w-full mb-6 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-1 flex">
+          <button class="tab-button flex-1 px-4 py-2 rounded-md transition-colors active" data-tab="skill">
+            Skill-Based
+          </button>
+          <button class="tab-button flex-1 px-4 py-2 rounded-md transition-colors" data-tab="academic">
+            Academic
+          </button>
+        </div>
 
-          <!-- Smart Forum Internship -->
-          <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-            <div class="flex justify-between items-start">
-              <a href="https://www.linkedin.com/in/uzairkbrr/#experience" target="_blank" rel="noopener noreferrer" class="font-medium flex items-center hover:underline">
-                AI Intern @
-                <span class="text-blue-600 dark:text-blue-400">Smart Forum</span>
-              </a>
-              <a href="https://www.linkedin.com/in/uzairkbrr/#experience" target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
+        <!-- Skill-Based Tab Content -->
+        <div id="skill-tab" class="tab-content active">
+          <!-- Experience Section -->
+          <div class="mb-12">
+            <h2 class="text-xl font-medium mb-4 flex items-center">
+              Experience <span class="ml-1">💼</span>
+            </h2>
+
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex justify-between items-start">
+                <a href="https://www.linkedin.com/in/uzairkbrr/#experience" target="_blank" rel="noopener noreferrer" class="font-medium flex items-center hover:underline">
+                  AI Intern @
+                  <span class="text-blue-600 dark:text-blue-400 ml-1">Smart Forum</span>
+                </a>
+                <a href="https://www.linkedin.com/in/uzairkbrr/#experience" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 hover:text-gray-800 dark:hover:text-gray-200">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+              <div class="flex justify-between items-center mt-3 flex-wrap gap-2">
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Developed and applied AI solutions using ML and LLMs.</p>
+                <p class="text-sm italic text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                  July 2025 — August 2025
+                </p>
+              </div>
             </div>
-            <div class="flex justify-between align-center mt-3">
-              <p class="text-gray-700 dark:text-gray-300 text-sm mt-1">Developed and applied AI solutions using ML and LLMs.</p>
-              <p class="text-sm italic text-gray-500 dark:text-gray-400 mt-1">
-                July 2025 &mdash; August 2025
-              </p>
+
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex justify-between items-start">
+                <a href="https://uptek.com/" target="_blank" rel="noopener noreferrer" class="font-medium flex items-center hover:underline">
+                  Frontend Intern @
+                  <span class="text-blue-600 dark:text-blue-400 ml-1">Uptek</span>
+                </a>
+                <a href="https://uptek.com/" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 hover:text-gray-800 dark:hover:text-gray-200">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+              <div class="flex justify-between items-center mt-3 flex-wrap gap-2">
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Worked on Real life projects.</p>
+                <p class="text-sm italic text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                  June 2024 — August 2024
+                </p>
+              </div>
+            </div>
+
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex justify-between items-start">
+                <a href="https://uptek.com/" target="_blank" rel="noopener noreferrer" class="font-medium flex items-center hover:underline">
+                  Frontend Intern @
+                  <span class="text-blue-600 dark:text-blue-400 ml-1">Uptek</span>
+                </a>
+                <a href="https://uptek.com/" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 hover:text-gray-800 dark:hover:text-gray-200">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+              <div class="flex justify-between items-center mt-3 flex-wrap gap-2">
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Learned the fundamentals of Web Development.</p>
+                <p class="text-sm italic text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                  June 2023 — August 2023
+                </p>
+              </div>
             </div>
           </div>
 
+          <!-- Projects Section -->
+          <div class="mb-12">
+            <h2 class="text-xl font-medium mb-4 flex items-center">
+              Projects <span class="ml-1">🚀</span>
+            </h2>
+            
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex justify-between items-start">
+                <a href="https://ecommerce-practise.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Ecommerce Practice Site</a>
+                <a href="https://ecommerce-practise.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Work-in-Progress: Ecommerce Platform UI Built with HTML, CSS, and JS for Frontend Practice!</p>
+            </div>
 
-         <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-          <div class="flex justify-between items-start">
-            <a href="https://uptek.com/" target="_blank" rel="noopener noreferrer" class="font-medium flex items-center hover:underline">
-              Frontend Intern @
-              <span class="text-blue-600 dark:text-blue-400">Uptek</span>
-            </a>
-            <a href="https://uptek.com/" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1-2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </a>
-          </div>
-          <div class="flex justify-between align-center mt-3">
-            <p class="text-gray-700 dark:text-gray-300 text-sm mt-1">Worked on Real life projects.</p>
-            <p class="text-sm italic text-gray-500 dark:text-gray-400 mt-1">
-              June 2024 &mdash; August 2024
-            </p>
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex justify-between items-start">
+                <a href="https://blogrportal.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Blogr Portal</a>
+                <a href="https://blogrportal.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">A Blogging platform UI built for practicing frontend development (HTML, CSS, and JS).</p>
+            </div>
+
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex justify-between items-start">
+                <a href="https://toolify-practice.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Toolify Practice</a>
+                <a href="https://toolify-practice.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">A tool UI designed for frontend practice using HTML, CSS, and JavaScript.</p>
+            </div>
           </div>
         </div>
 
-        <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-          <div class="flex justify-between items-start">
-            <a href="https://uptek.com/" target="_blank" rel="noopener noreferrer" class="font-medium flex items-center hover:underline">
-              Frontend Intern @
-              <span class="text-blue-600 dark:text-blue-400">Uptek</span>
-            </a>
-            <a href="https://uptek.com/" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </a>
-          </div>
-          <div class="flex justify-between align-center mt-3">
-            <p class="text-gray-700 dark:text-gray-300 text-sm mt-1">Learned the fundamentals of Web Development.</p>
-            <p class="text-sm italic text-gray-500 dark:text-gray-400 mt-1">
-              June 2023 &mdash; August 2023
-            </p>
-          </div>
-        </div>
+        <!-- Academic Tab Content -->
+        <div id="academic-tab" class="tab-content">
+          <!-- Experience Section -->
+          <div class="mb-12">
+            <h2 class="text-xl font-medium mb-4 flex items-center">
+              Experience <span class="ml-1">💼</span>
+            </h2>
 
-      <!-- Projects Section -->
-      <div class="mb-12">
-        <h2 class="text-xl font-medium mb-4 flex items-center">
-          Projects <span class="ml-1">🚀</span>
-        </h2>
-        
-        <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-          <div class="flex justify-between items-start">
-            <a href="https://ecommerce-practise.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Ecommerce Practice Site</a>
-            <a href="https://ecommerce-practise.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </a>
-          </div>
-          <p class="text-gray-700 dark:text-gray-300 text-sm mt-1">Work-in-Progress: Ecommerce Platform UI Built with HTML, CSS, and JS for Frontend Practice!</p>
-        </div>
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex justify-between items-start">
+                <a href="#" class="font-medium flex items-center hover:underline">
+                  Teaching Assistant @
+                  <span class="text-blue-600 dark:text-blue-400 ml-1">FAST University</span>
+                </a>
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 hover:text-gray-800 dark:hover:text-gray-200">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+              <div class="flex justify-between items-center mt-3 flex-wrap gap-2">
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Assisted in Data Structures and Algorithms course, conducted lab sessions.</p>
+                <p class="text-sm italic text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                  September 2024 — Present
+                </p>
+              </div>
+            </div>
 
-        <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-          <div class="flex justify-between items-start">
-            <a href="https://blogrportal.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Blogr Portal</a>
-            <a href="https://blogrportal.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </a>
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex justify-between items-start">
+                <a href="#" class="font-medium flex items-center hover:underline">
+                  Research Assistant @
+                  <span class="text-blue-600 dark:text-blue-400 ml-1">FAST University</span>
+                </a>
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 hover:text-gray-800 dark:hover:text-gray-200">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+              <div class="flex justify-between items-center mt-3 flex-wrap gap-2">
+                <p class="text-gray-600 dark:text-gray-400 text-sm">Worked on machine learning research project focused on NLP applications.</p>
+                <p class="text-sm italic text-gray-500 dark:text-gray-500 whitespace-nowrap">
+                  January 2024 — May 2024
+                </p>
+              </div>
+            </div>
           </div>
-          <p class="text-gray-700 dark:text-gray-300 text-sm mt-1">A Blogging platform UI built for practicing frontend development (HTML, CSS, and JS).</p>
-        </div>
 
-        <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-          <div class="flex justify-between items-start">
-            <a href="https://toolify-practice.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Toolify Practice</a>
-            <a href="https://toolify-practice.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </a>
+          <!-- Achievements Section -->
+          <div class="mb-12">
+            <h2 class="text-xl font-medium mb-4 flex items-center">
+              Achievements <span class="ml-1">✨</span>
+            </h2>
+            
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex items-start gap-3">
+                <span class="text-2xl">🥈</span>
+                <div class="flex-1">
+                  <h3 class="font-medium">Silver Medalist</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Awarded Silver Medal for outstanding academic performance</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex items-start gap-3">
+                <span class="text-2xl">🥈</span>
+                <div class="flex-1">
+                  <h3 class="font-medium">Silver Medalist</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Awarded Silver Medal for excellence in coursework</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex items-start gap-3">
+                <span class="text-2xl">🏆</span>
+                <div class="flex-1">
+                  <h3 class="font-medium">Dean's List of Honor</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Recognized for exceptional academic achievement</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex items-start gap-3">
+                <span class="text-2xl">🏆</span>
+                <div class="flex-1">
+                  <h3 class="font-medium">Dean's List of Honor</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Recognized for outstanding academic performance</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex items-start gap-3">
+                <span class="text-2xl">🏆</span>
+                <div class="flex-1">
+                  <h3 class="font-medium">Dean's List of Honor</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Recognized for academic excellence</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-gray-400 dark:hover:border-gray-600 transition-colors">
+              <div class="flex items-start gap-3">
+                <span class="text-2xl">🏆</span>
+                <div class="flex-1">
+                  <h3 class="font-medium">Dean's List of Honor</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">Recognized for superior academic achievement</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="text-gray-700 dark:text-gray-300 text-sm mt-1">A tool UI designed for frontend practice using HTML, CSS, and JavaScript.</p>
         </div>
       </div>
 
-      <!-- Languages Section -->
-<!--       <div class="mb-12">
-        <h2 class="text-xl font-medium mb-4 flex items-center">
-          Languages <span class="ml-1">🌎</span>
-        </h2>
-        <p class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 mb-3">Urdu (native), English (fluent)</p>
-      </div> -->
-
       <!-- Socials Section -->
-        <div class="mb-12">
-          <h2 class="text-xl font-medium mb-4 flex items-center">
-            Socials <span class="ml-1">🌐</span>
-          </h2>
-          <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
-            <div class="flex flex-wrap gap-6">
-              <!-- Email -->
-              <a href="mailto:uzairbrr@gmail.com" class="group transition-transform duration-300 transform hover:scale-110" aria-label="Email">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700 dark:text-gray-300 group-hover:text-[#EA4335] group-hover:stroke-[#EA4335] transition-colors duration-300">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </a>
-              <!-- Twitter -->
-              <a href="https://twitter.com/uzairkbrr/" target="_blank" rel="noopener noreferrer" class="group transition-transform duration-300 transform hover:scale-110" aria-label="Twitter">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700 dark:text-gray-300 group-hover:text-[#1DA1F2] group-hover:stroke-[#1DA1F2] transition-colors duration-300">
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                </svg>
-              </a>
-              <!-- LinkedIn -->
-              <a href="https://linkedin.com/in/uzairkbrr/" target="_blank" rel="noopener noreferrer" class="group transition-transform duration-300 transform hover:scale-110" aria-label="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700 dark:text-gray-300 group-hover:text-[#0A66C2] group-hover:stroke-[#0A66C2] transition-colors duration-300">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-              </a>
-              <!-- GitHub -->
-              <a href="https://github.com/uzairkbrr/" target="_blank" rel="noopener noreferrer" class="group transition-transform duration-300 transform hover:scale-110" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700 dark:text-gray-300 group-hover:text-[#181717] dark:group-hover:text-white group-hover:stroke-[#181717] dark:group-hover:stroke-white transition-colors duration-300">
-                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                </svg>
-              </a>
-              <!-- LeetCode -->
-              <a href="https://leetcode.com/uzairkbrr/" target="_blank" rel="noopener noreferrer" class="group transition-transform duration-300 transform hover:scale-110" aria-label="LeetCode">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="text-gray-700 dark:text-gray-300 group-hover:text-[#FFA116] transition-colors duration-300">
-                  <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
-                </svg>
-              </a>
-            </div>
+      <div class="mb-12">
+        <h2 class="text-xl font-medium mb-4 flex items-center">
+          Socials <span class="ml-1">🌐</span>
+        </h2>
+        <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+          <div class="flex flex-wrap gap-6">
+            <!-- Email -->
+            <a href="mailto:uzairbrr@gmail.com" class="group transition-transform duration-300 transform hover:scale-110" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600 dark:text-gray-400 group-hover:text-[#EA4335] transition-colors duration-300">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            <!-- Twitter -->
+            <a href="https://twitter.com/uzairkbrr/" target="_blank" rel="noopener noreferrer" class="group transition-transform duration-300 transform hover:scale-110" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600 dark:text-gray-400 group-hover:text-[#1DA1F2] transition-colors duration-300">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/uzairkbrr/" target="_blank" rel="noopener noreferrer" class="group transition-transform duration-300 transform hover:scale-110" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600 dark:text-gray-400 group-hover:text-[#0A66C2] transition-colors duration-300">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com/uzairkbrr/" target="_blank" rel="noopener noreferrer" class="group transition-transform duration-300 transform hover:scale-110" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-white transition-colors duration-300">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <!-- LeetCode -->
+            <a href="https://leetcode.com/uzairkbrr/" target="_blank" rel="noopener noreferrer" class="group transition-transform duration-300 transform hover:scale-110" aria-label="LeetCode">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="text-gray-600 dark:text-gray-400 group-hover:text-[#FFA116] transition-colors duration-300">
+                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
@@ -236,8 +384,6 @@
       // Theme toggle functionality
       document.addEventListener('DOMContentLoaded', function() {
         const themeToggle = document.getElementById('themeToggle');
-
-        // Check if user has a saved preference or use system preference
         const savedTheme = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -248,7 +394,7 @@
           document.documentElement.classList.remove('dark');
         }
 
-        // Add click event listener for theme toggle
+        // Theme toggle click handler
         themeToggle.addEventListener('click', function() {
           const isDarkMode = document.documentElement.classList.contains('dark');
           
@@ -261,16 +407,33 @@
           }
         });
 
-        // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-          if (!localStorage.getItem('theme')) {
-            if (e.matches) {
-              document.documentElement.classList.add('dark');
-            } else {
-              document.documentElement.classList.remove('dark');
-            }
-          }
+        // Tab switching functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const tabName = this.getAttribute('data-tab');
+
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => {
+              btn.classList.remove('active', 'bg-white', 'dark:bg-gray-900', 'shadow-sm');
+            });
+            tabContents.forEach(content => {
+              content.classList.remove('active');
+            });
+
+            // Add active class to clicked button and corresponding content
+            this.classList.add('active', 'bg-white', 'dark:bg-gray-900', 'shadow-sm');
+            document.getElementById(tabName + '-tab').classList.add('active');
+          });
         });
+
+        // Set initial active tab styling
+        const activeButton = document.querySelector('.tab-button.active');
+        if (activeButton) {
+          activeButton.classList.add('bg-white', 'dark:bg-gray-900', 'shadow-sm');
+        }
       });
     </script>
   </body>
