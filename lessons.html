@@ -41,8 +41,8 @@
 </head>
 
 <body
-    class="bg-[#fafafa] dark:bg-[#111] text-neutral-800 dark:text-neutral-200 transition-colors duration-300 antialiased selection:bg-neutral-200 dark:selection:bg-neutral-800">
-    <div class="max-w-2xl mx-auto px-6 py-12 md:py-20 relative">
+    class="bg-[#fafafa] dark:bg-[#111] text-neutral-800 dark:text-neutral-200 transition-colors duration-300 antialiased selection:bg-neutral-200 dark:selection:bg-neutral-800 flex flex-col min-h-screen">
+    <div class="max-w-2xl mx-auto px-6 py-12 md:py-20 relative w-full flex-1 flex flex-col">
 
         <!-- Theme Toggle -->
         <div class="fixed top-6 right-6 z-50">
@@ -71,11 +71,11 @@
             <p class="text-neutral-500 dark:text-neutral-400 mt-2">- Notes to self and others.</p>
         </header>
 
-        <main class="animate-fade-in" style="animation-delay: 0.1s;">
+        <main class="animate-fade-in flex-1" style="animation-delay: 0.1s;">
             <ul id="lessons-list" class="space-y-4"></ul>
         </main>
 
-        <footer class="pt-12 pb-6 text-center text-xs text-neutral-400 dark:text-neutral-600">
+        <footer class="pt-12 pb-6 text-center text-xs text-neutral-400 dark:text-neutral-600 mt-auto">
             <p>© <span id="year"></span> Uzair Ahmad.</p>
         </footer>
     </div>

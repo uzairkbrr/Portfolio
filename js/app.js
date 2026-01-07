@@ -1,5 +1,5 @@
 
-import { experienceData, projectsData, vibeCodedData, achievementsData, socialsData, lessonsData } from './data.js';
+import { fetchData } from './data.js';
 
 // --- Theme Logic ---
 const initTheme = () => {
@@ -32,27 +32,27 @@ const initFooter = () => {
 // --- Render Functions ---
 
 const createExperienceItem = (item) => `
-    <a href="${item.companyUrl}" target="_blank"
+    <a href="${item.Link || '#'}" target="_blank"
         class="block group relative pl-4 border-l-2 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">
         <div class="flex justify-between items-baseline flex-wrap gap-2 mb-1">
-            <h3 class="font-medium group-hover:underline decoration-neutral-400 underline-offset-4">${item.role} @ ${item.company}</h3>
-            <span class="text-xs text-neutral-500 dark:text-neutral-500 font-mono">${item.date}</span>
+            <h3 class="font-medium group-hover:underline decoration-neutral-400 underline-offset-4">${item.Role} @ ${item.Company}</h3>
+            <span class="text-xs text-neutral-500 dark:text-neutral-500 font-mono">${item.Date}</span>
         </div>
         <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            ${item.description}
+            ${item.Description}
         </p>
     </a>
 `;
 
 const createProjectCard = (item, isVibe = false) => `
-    <a href="${item.url}" target="_blank" class="block group">
+    <a href="${item.Link || '#'}" target="_blank" class="block group">
         <div class="h-full p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all hover:shadow-sm">
              <div class="${isVibe ? 'flex justify-between items-start' : ''}">
                 <div>
                     <h3 class="font-medium text-neutral-900 dark:text-neutral-100 group-hover:underline decoration-neutral-400 underline-offset-4">
-                        ${item.title}
+                        ${item.Title}
                     </h3>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-2">${item.description}</p>
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-2">${item.Description}</p>
                 </div>
                  ${isVibe ? '<div class="text-xl group-hover:scale-110 transition-transform">✨</div>' : ''}
             </div>
@@ -63,22 +63,22 @@ const createProjectCard = (item, isVibe = false) => `
 const createAchievementItem = (item) => {
     const content = `
         <div class="flex justify-between items-baseline flex-wrap gap-2 mb-1">
-            <h3 class="font-medium ${item.url ? 'group-hover:underline decoration-neutral-400 underline-offset-4' : ''}">${item.title}</h3>
+            <h3 class="font-medium ${item.Link ? 'group-hover:underline decoration-neutral-400 underline-offset-4' : ''}">${item.Title}</h3>
         </div>
         <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            ${item.description}
+            ${item.Description}
         </p>
     `;
 
-    if (item.url) {
-        return `<a href="${item.url}" target="_blank" class="block group relative pl-4 border-l-2 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">${content}</a>`;
+    if (item.Link) {
+        return `<a href="${item.Link}" target="_blank" class="block group relative pl-4 border-l-2 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">${content}</a>`;
     } else {
         return `<div class="group relative pl-4 border-l-2 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">${content}</div>`;
     }
 };
 
 const createSocialLink = (item, index, total) => `
-    <a href="${item.url}" ${item.url.startsWith('mailto') ? '' : 'target="_blank"'} class="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors">${item.name}</a>
+    <a href="${item.Link}" ${item.Link && item.Link.startsWith('mailto') ? '' : 'target="_blank"'} class="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors">${item.Name}</a>
     ${index < total - 1 ? '<span class="text-neutral-300 dark:text-neutral-700">/</span>' : ''}
 `;
 
@@ -90,43 +90,64 @@ const createLessonItem = (text) => `
 
 // --- Initialization ---
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
     initFooter();
 
-    // Render Experience
-    const experienceContainer = document.getElementById('experience-list');
-    if (experienceContainer) {
-        experienceContainer.innerHTML = experienceData.map(createExperienceItem).join('');
-    }
+    // -- Dynamic Data Fetching --
 
-    // Render Projects
-    const projectsContainer = document.getElementById('projects-grid');
-    if (projectsContainer) {
-        projectsContainer.innerHTML = projectsData.map(item => createProjectCard(item)).join('');
-    }
-
-    // Render Vibe Coded
-    const vibeContainer = document.getElementById('vibe-grid');
-    if (vibeContainer) {
-        vibeContainer.innerHTML = vibeCodedData.map(item => createProjectCard(item, true)).join('');
-    }
-
-    // Render Achievements
-    const achievementsContainer = document.getElementById('achievements-list');
-    if (achievementsContainer) {
-        achievementsContainer.innerHTML = achievementsData.map(createAchievementItem).join('');
-    }
-
-    // Render Socials
+    // 1. Socials
     const socialsContainer = document.getElementById('socials-list');
     if (socialsContainer) {
-        socialsContainer.innerHTML = socialsData.map((item, index) => createSocialLink(item, index, socialsData.length)).join('');
+        // Fetch fetching logic here or use fetchData('socials')
+        const socials = await fetchData('socials');
+        if (socials && socials.length > 0) {
+            socialsContainer.innerHTML = socials.map((item, index) => createSocialLink(item, index, socials.length)).join('');
+        }
     }
 
-    // Render Lessons
+    // 2. Lessons
     const lessonsContainer = document.getElementById('lessons-list');
     if (lessonsContainer) {
-        lessonsContainer.innerHTML = lessonsData.map(createLessonItem).join('');
+        const lessons = await fetchData('lessons');
+        if (lessons && lessons.length > 0) {
+            lessonsContainer.innerHTML = lessons.map(row => createLessonItem(row.Lesson)).join('');
+        }
+    }
+
+    // 3. Projects
+    const projectsContainer = document.getElementById('projects-grid');
+    if (projectsContainer) {
+        const projects = await fetchData('projects');
+        if (projects && projects.length > 0) {
+            projectsContainer.innerHTML = projects.map(item => createProjectCard(item)).join('');
+        }
+    }
+
+    // 4. Vibe Coded
+    const vibeContainer = document.getElementById('vibe-grid');
+    if (vibeContainer) {
+        const vibe = await fetchData('vibe_coded');
+        if (vibe && vibe.length > 0) {
+            vibeContainer.innerHTML = vibe.map(item => createProjectCard(item, true)).join('');
+        }
+    }
+
+    // 5. Experience
+    const experienceContainer = document.getElementById('experience-list');
+    if (experienceContainer) {
+        const experience = await fetchData('experience');
+        if (experience && experience.length > 0) {
+            experienceContainer.innerHTML = experience.map(createExperienceItem).join('');
+        }
+    }
+
+    // 6. Achievements
+    const achievementsContainer = document.getElementById('achievements-list');
+    if (achievementsContainer) {
+        const achievements = await fetchData('achievements');
+        if (achievements && achievements.length > 0) {
+            achievementsContainer.innerHTML = achievements.map(createAchievementItem).join('');
+        }
     }
 });
