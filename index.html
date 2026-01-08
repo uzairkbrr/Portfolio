@@ -102,19 +102,6 @@
           class="grid grid-cols-1 sm:grid-cols-2 gap-4 [&>*:nth-child(odd):last-child]:sm:col-span-2"></div>
       </section>
 
-      <!-- VIBE CODED Section -->
-      <section class="animate-slide-up" style="animation-delay: 0.3s;">
-        <div class="flex items-center gap-2 mb-6">
-          <h2 class="text-lg font-semibold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Vibe Coded</h2>
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-          </span>
-        </div>
-        <div id="vibe-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4 [&>*:nth-child(odd):last-child]:sm:col-span-2">
-        </div>
-      </section>
 
       <!-- Achievements Section -->
       <section class="animate-slide-up" style="animation-delay: 0.35s;">
@@ -123,19 +110,33 @@
         <div id="achievements-list" class="space-y-4"></div>
       </section>
 
-      <!-- Lessons Section -->
+      <!-- Lessons & Books Section -->
       <section class="animate-slide-up" style="animation-delay: 0.38s;">
-        <a href="lessons.html"
-          class="group block p-6 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all">
-          <div class="flex items-center justify-between">
-            <div>
-              <h2 class="text-lg font-semibold group-hover:underline decoration-neutral-400 underline-offset-4">Lessons
-              </h2>
-              <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">What I've learned the hard way.</p>
+        <h2 class="text-lg font-semibold mb-6 flex items-center gap-2">Learnings & Library</h2>
+        <div class="space-y-4">
+          <!-- Lessons Link -->
+          <a href="lessons.html"
+            class="block group relative pl-4 border-l-2 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">
+            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-1">
+              <h3 class="font-medium group-hover:underline decoration-neutral-400 underline-offset-4">Learnings /
+                Lessons</h3>
             </div>
-            <span class="text-neutral-400 group-hover:translate-x-1 transition-transform">→</span>
-          </div>
-        </a>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              Notes to self and others.
+            </p>
+          </a>
+
+          <!-- Read Books Link -->
+          <a href="read_books.html"
+            class="block group relative pl-4 border-l-2 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors">
+            <div class="flex justify-between items-baseline flex-wrap gap-2 mb-1">
+              <h3 class="font-medium group-hover:underline decoration-neutral-400 underline-offset-4">Read Books</h3>
+            </div>
+            <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              What I read.
+            </p>
+          </a>
+        </div>
       </section>
 
       <!-- Socials -->

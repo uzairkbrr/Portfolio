@@ -11,5 +11,6 @@ export const TABS = {
     experience: 1800472574,
     vibe_coded: 581432039,
     achievements: 168499249,
-    socials: 1662867441
+    socials: 1662867441,
+    read_books: 694911149,
 };

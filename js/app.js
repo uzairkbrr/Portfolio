@@ -101,6 +101,13 @@ const createLessonItem = (row) => {
     `;
 };
 
+const createBookItem = (book, index) => `
+    <div class="group relative pl-4 border-l-2 border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors duration-300">
+        <span class="font-medium text-neutral-900 dark:text-neutral-100">${index}. ${book.Title}</span>
+        <span class="text-neutral-500 dark:text-neutral-400"> — ${book.Author}</span>
+    </div>
+    `;
+
 
 
 // --- Initialization ---
@@ -130,22 +137,36 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // 3. Projects
-    const projectsContainer = document.getElementById('projects-grid');
-    if (projectsContainer) {
-        const projects = await fetchData('projects');
-        if (projects && projects.length > 0) {
-            projectsContainer.innerHTML = projects.map(item => createProjectCard(item)).join('');
+    // 2.5 Read Books
+    const booksContainer = document.getElementById('read-books-list');
+    if (booksContainer) {
+        const books = await fetchData('read_books');
+        if (books && books.length > 0) {
+            // Sort by Number if available, otherwise keep order
+            // books.sort((a, b) => (parseInt(a.Number) || 0) - (parseInt(b.Number) || 0));
+            booksContainer.innerHTML = books.map((book, i) => createBookItem(book, i + 1)).join('');
         }
     }
 
-    // 4. Vibe Coded
-    const vibeContainer = document.getElementById('vibe-grid');
-    if (vibeContainer) {
-        const vibe = await fetchData('vibe_coded');
-        if (vibe && vibe.length > 0) {
-            vibeContainer.innerHTML = vibe.map(item => createProjectCard(item, true)).join('');
+    // 3. Projects & Vibe Coded
+    const projectsContainer = document.getElementById('projects-grid');
+    if (projectsContainer) {
+        const [projects, vibe] = await Promise.all([
+            fetchData('projects'),
+            fetchData('vibe_coded')
+        ]);
+
+        let combinedHTML = '';
+
+        if (projects && projects.length > 0) {
+            combinedHTML += projects.map(item => createProjectCard(item, false)).join('');
         }
+
+        if (vibe && vibe.length > 0) {
+            combinedHTML += vibe.map(item => createProjectCard(item, true)).join('');
+        }
+
+        projectsContainer.innerHTML = combinedHTML;
     }
 
     // 5. Experience
