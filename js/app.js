@@ -82,11 +82,26 @@ const createSocialLink = (item, index, total) => `
     ${index < total - 1 ? '<span class="text-neutral-300 dark:text-neutral-700">/</span>' : ''}
 `;
 
-const createLessonItem = (text) => `
-    <li class="pl-4 border-l-2 border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300">
-        ${text}
+const createLessonItem = (row) => {
+    // If it's just a string (old format), handle it
+    const text = row.Lesson || row;
+    const explanation = row.Explanation || "No explanation available.";
+
+    return `
+    <li class="lesson-item group relative pl-4 border-l-2 border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 cursor-help transition-all duration-300">
+        <span class="relative z-10">${text}</span>
+        
+        <!-- Tooltip -->
+        <div class="absolute left-0 bottom-full mb-2 w-64 p-3 bg-neutral-900 dark:bg-white text-white dark:text-black text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none z-20 transform translate-y-2 group-hover:translate-y-0">
+            ${explanation}
+            <!-- Arrow -->
+            <div class="absolute left-4 top-full w-0 h-0 border-x-8 border-x-transparent border-t-8 border-t-neutral-900 dark:border-t-white"></div>
+        </div>
     </li>
-`;
+    `;
+};
+
+
 
 // --- Initialization ---
 
@@ -111,7 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (lessonsContainer) {
         const lessons = await fetchData('lessons');
         if (lessons && lessons.length > 0) {
-            lessonsContainer.innerHTML = lessons.map(row => createLessonItem(row.Lesson)).join('');
+            lessonsContainer.innerHTML = lessons.map(row => createLessonItem(row)).join('');
         }
     }
 
