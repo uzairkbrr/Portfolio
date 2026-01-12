@@ -130,21 +130,38 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. Lessons
     const lessonsContainer = document.getElementById('lessons-list');
-    if (lessonsContainer) {
+    const lessonCountSpan = document.getElementById('lesson-count');
+
+    if (lessonsContainer || lessonCountSpan) {
         const lessons = await fetchData('lessons');
         if (lessons && lessons.length > 0) {
-            lessonsContainer.innerHTML = lessons.map(row => createLessonItem(row)).join('');
+            if (lessonsContainer) {
+                lessonsContainer.innerHTML = lessons.map(row => createLessonItem(row)).join('');
+            }
+            if (lessonCountSpan) {
+                // Filter out empty rows if necessary, or just use length if data is clean
+                lessonCountSpan.textContent = lessons.length;
+            }
         }
     }
 
     // 2.5 Read Books
     const booksContainer = document.getElementById('read-books-list');
-    if (booksContainer) {
+    const bookCountSpan = document.getElementById('book-count');
+
+    // Always fetch books if we need to display the list OR the count
+    if (booksContainer || bookCountSpan) {
         const books = await fetchData('read_books');
+
         if (books && books.length > 0) {
-            // Sort by Number if available, otherwise keep order
-            // books.sort((a, b) => (parseInt(a.Number) || 0) - (parseInt(b.Number) || 0));
-            booksContainer.innerHTML = books.map((book, i) => createBookItem(book, i + 1)).join('');
+            // Update list if container exists
+            if (booksContainer) {
+                booksContainer.innerHTML = books.map((book, i) => createBookItem(book, i + 1)).join('');
+            }
+            // Update count if span exists
+            if (bookCountSpan) {
+                bookCountSpan.textContent = books.length;
+            }
         }
     }
 
